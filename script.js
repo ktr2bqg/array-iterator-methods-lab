@@ -88,19 +88,13 @@ const comments = [
   { text: "Nice Nice Nice!", id: 542328 },
 ];
 
-// Array.prototype.filter()
-
-// 1. Filter the array of inventors into a new array containing only the inventors born in the 1500's.
-
-// - You have an array of inventors, each with a birth year listed by the property 'year'.
-// - Use the Array.prototype.filter() method to create a new array.
-// - The new array, 'veryOldInventors', should only include inventors born between the years 1500 and 1599.
+// 1. Array.prototype.filter()
 
 let veryOldInventors = []
 
 // Enter your solution code here:
-const oldInventors = inventors.filter((inventor) => {
-  return veryOldInventors.year <= 1500 || veryOldInventors.year > 1600;
+ veryOldInventors = inventors.filter((inventor) => {
+  return inventor.year >= 1500 && inventor.year < 1600;
 })
 
 // Check your return value:
@@ -112,22 +106,17 @@ console.log('Exercise 1 Correct Result: ',
     ]
 )
 
-// Array.prototype.map()
-
-// 2. Map the array of inventors into a new array. This new array should only contain objects with the inventors' first and last names.
-
-// - For each inventor, return an object in the format { first: "First Name", last: "Last Name" }.
-// - The new array should be a collection of these objects, each representing an inventor with only their first and last names.
-
-// Hint:  Return a new object literal from the callback that looks something like { first: "First Name", last: "Last Name" }
-
+// 2. Array.prototype.map()
 
 let inventorNames = []
 
 // Enter your solution code here:
-inventorNames.first
-
-
+inventorNames = inventors.map(
+  (inventor) => {
+    let fullName = {'first': inventor.first, 'last': inventor.last}
+    return fullName
+  }
+)
 // Check your return value:
 console.log('Exercise 2 My Result: ', inventorNames)
 console.log('Exercise 2 Correct Result: ',
@@ -146,4 +135,46 @@ console.log('Exercise 2 Correct Result: ',
         { first: 'Hanna', last: 'Hammarström' }
     ]
 )
+// 3. Array.prototype.sort()
 
+let sortedByBirthYear = []
+
+sortedByBirthYear = inventors.sort((a, b) => {
+  return a.year - b.year
+}) 
+
+// Check your return value:
+console.log('Exercise 3 My Result: ', sortedByBirthYear)
+console.log('Exercise 3 Correct Result: ',
+    [
+        { first: 'Nicolaus', last: 'Copernicus', year: 1473, passed: 1543 },
+        { first: 'Galileo', last: 'Galilei', year: 1564, passed: 1642 },
+        { first: 'Johannes', last: 'Kepler', year: 1571, passed: 1630 },
+        { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },
+        { first: 'Ada', last: 'Lovelace', year: 1815, passed: 1852 },
+        { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 },
+        { first: 'Sarah E.', last: 'Goode', year: 1855, passed: 1905 },
+        { first: 'Max', last: 'Planck', year: 1858, passed: 1947 },
+        { first: 'Marie', last: 'Curie', year: 1867, passed: 1934 },
+        { first: 'Lise', last: 'Meitner', year: 1878, passed: 1968 },
+        { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
+        { first: 'Katherine', last: 'Blodgett', year: 1898, passed: 1979 }
+    ]
+)
+
+// Array.prototype.find()
+
+// 4. Use Array.prototype.find() to identify the inventor with the first name 'Ada' from an array of inventor objects
+
+// - You have an array of objects, each representing an inventor with various properties including their first name.
+// -  Utilize the Array.prototype.find() method to locate the object for the inventor named 'Ada'.
+// -  Assign the found inventor object to the variable 'inventorNamedAda'
+
+let inventorNamedAda = {}
+
+// Enter you solution code here:
+inventorNamedAda = inventors.find((inventor) => {
+})
+// Check your return value:
+console.log('Exercise 4 My Result: ', inventorNamedAda)
+console.log('Exercise 4 Correct Result: ', { first: 'Ada', last: 'Lovelace', year: 1815, passed: 1852 })
